@@ -236,14 +236,18 @@ en build: si falta un campo, el build falla y te enteras antes de desplegar.
 | 1 | `HeroScrollWorld` | Cinemática con scroll-scrub (skill `scroll-world`): la cámara recorre el "mundo CaliPro". Encima: claim, subclaim, CTA WhatsApp + CTA app | Desktop: scrub de vídeo a pantalla completa. Móvil: **el mismo vídeo con menos frames** o poster + vídeo corto en loop; nunca scrub pesado en móvil. Con `prefers-reduced-motion`: imagen estática + texto |
 | 2 | `StatsStrip` | 3-4 cifras (seguidores, atletas formados, años entrenando) | Fila de 4 → grid 2×2 en móvil |
 | 3 | `SkillsShowcase` | Las 5 skills destacadas en tarjetas | Desktop: grid 5 (o 3+2) con hover que reproduce un clip corto. Móvil: carrusel con `scroll-snap`, sin hover, con indicadores |
-| 4 | `AppTeaser` | Mockup del móvil + 3 beneficios + `WaitlistForm` | Desktop: 2 columnas (mockup / texto). Móvil: mockup arriba, texto debajo |
-| 5 | `ShopTeaser` | 3 productos destacados con **preview 3D** | Desktop: 3 tarjetas, 3D se activa al hacer hover/entrar en viewport. Móvil: carrusel, 3D **solo** al pulsar "Ver en 3D" |
-| 6 | `PromoCodesSection` | Grid de marcas con su código y descuento | Grid 3-4 → 1 columna en móvil. Botón "copiar" grande (≥44px) |
-| 7 | `BlogTeaser` | Los 3 últimos posts | Grid 3 → carrusel/stack en móvil |
-| 8 | `AboutCoach` | Foto + bio corta de tu amigo | 2 columnas → 1 |
-| 9 | `ContactSocial` | CTA WhatsApp (primario), `mailto:`, Instagram, TikTok | Botones a ancho completo en móvil |
+| 4 | `ServicesSection` | Las tres formas de entrenar (gratis / app / uno a uno) en tarjetas comparables | Desktop: 3 columnas, la del medio destacada. Móvil: apiladas, la recomendada primero |
+| 5 | `AppTeaser` | Mockup del móvil + 3 beneficios + `WaitlistForm` | Desktop: 2 columnas (mockup / texto). Móvil: mockup arriba, texto debajo |
+| 6 | `ShopTeaser` | 3 productos destacados con **preview 3D** + ficha de materiales | Desktop: 3 tarjetas, 3D se activa al hacer hover/entrar en viewport. Móvil: carrusel, 3D **solo** al pulsar "Ver en 3D" |
+| 7 | `PromoCodesSection` | Grid de marcas con su código y descuento | Grid 3-4 → 1 columna en móvil. Botón "copiar" grande (≥44px) |
+| 8 | `BlogTeaser` | Los 3 últimos posts | Grid 3 → carrusel/stack en móvil |
+| 9 | `AboutCoach` | Foto + bio corta del entrenador | 2 columnas → 1 |
+| 10 | `ContactSocial` | CTA WhatsApp (primario), `mailto:`, Instagram, TikTok | Botones a ancho completo en móvil |
 
 Cada sección: `<section id>` + `SectionHeading` + `RevealOnScroll` (fade/slide de 200-300ms, desactivado con `prefers-reduced-motion`).
+
+**El texto de cada sección ya está escrito**, en inglés y español, en `COPY-EN.md` y `COPY-ES.md`.
+Ningún componente se construye con texto improvisado: si falta una línea, se añade primero al copy.
 
 ### 4.3 Skills (`components/skills/`)
 

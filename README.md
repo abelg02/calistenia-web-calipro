@@ -9,6 +9,9 @@ y escritorio, con visor 3D de producto, códigos promocionales, guías de skills
 
 | Documento | Contenido |
 |---|---|
+| [`docs/BRAND-VOICE.md`](docs/BRAND-VOICE.md) | Ángulo de diferenciación, posicionamiento, públicos, tono y dirección de arte |
+| [`docs/COPY-EN.md`](docs/COPY-EN.md) | Copy completo de la landing en inglés (versión origen) |
+| [`docs/COPY-ES.md`](docs/COPY-ES.md) | Copy completo en español (adaptación, no traducción) |
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Decisiones (idioma, leads, one-page vs multipágina), stack, estructura de carpetas, plan de componentes, 3D, responsive, rendimiento, SEO |
 | [`docs/CONTENT-MODEL.md`](docs/CONTENT-MODEL.md) | Esquemas de contenido: skills, productos, códigos promo, blog, textos de UI |
 | [`docs/ROADMAP.md`](docs/ROADMAP.md) | Fases de construcción y datos que hacen falta del cliente |
