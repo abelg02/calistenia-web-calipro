@@ -32,8 +32,11 @@ Framer Motion + GSAP (solo hero) · @react-three/fiber (solo tienda) · MDX + Zo
 
 ## MCP
 
-Higgsfield se usa **fuera del runtime**, para producir assets (clips del hero, renders, portadas).
-La salida se optimiza y se commitea en `public/`. La web no llama a Higgsfield en runtime.
+`higgsfield` está declarado en `.mcp.json` (scope de proyecto), así que viaja con el repositorio.
+El archivo solo guarda la URL, nunca credenciales: cada máquina se autentica por su cuenta con `/mcp`.
+
+Se usa **fuera del runtime**, para producir assets (clips del hero, renders, portadas). La salida se
+optimiza y se commitea en `public/`. La web no llama a Higgsfield en runtime.
 
 ## Presupuestos que no se negocian
 
