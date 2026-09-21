@@ -24,6 +24,9 @@
 
 @layer base {
   html {
+    color-scheme: dark;
+    /* Anchors and keyboard focus land below the fixed header. */
+    scroll-padding-top: 5rem;
     background: var(--color-basalt);
     color: var(--color-travertine);
     scroll-behavior: smooth;
@@ -35,9 +38,10 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
-  /* Anchor targets clear the fixed header. */
-  section[id] {
-    scroll-margin-top: 4.5rem;
+  a,
+  button,
+  label {
+    touch-action: manipulation;
   }
   :focus-visible {
     outline: 2px solid var(--color-gold);
@@ -78,8 +82,27 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Hero copy entrance: pure CSS so it runs from the first paint (good LCP), staggered by --i. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 120ms + 100ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .rise {
+    animation: none;
   }
 }

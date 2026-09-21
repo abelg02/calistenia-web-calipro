@@ -49,7 +49,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/tienda/
   ];
 
   return (
-    <main>
+    <main id="main">
       <section className="mx-auto grid max-w-[1400px] gap-10 px-4 pb-20 pt-24 sm:px-6 lg:grid-cols-12 lg:gap-14 lg:px-10 lg:pt-32">
         <div className="lg:col-span-7">
           <ProductGallery

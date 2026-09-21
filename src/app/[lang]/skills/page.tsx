@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { skills } from "@/content/skills";
-import { skillPath, skillsPath } from "@/lib/routes";
+import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react/ssr";
+import { skillPath, skillsPath, testPath } from "@/lib/routes";
 import { waHref } from "@/lib/contact";
 import { SkillsBrowser } from "@/components/skills/SkillsBrowser";
 import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
@@ -37,10 +39,16 @@ export default async function SkillsPage({ params }: PageProps<"/[lang]/skills">
   }));
 
   return (
-    <main className="mx-auto max-w-[1400px] px-4 pb-24 pt-28 sm:px-6 lg:px-10 lg:pb-32 lg:pt-36">
+    <main id="main" className="mx-auto max-w-[1400px] px-4 pb-24 pt-28 sm:px-6 lg:px-10 lg:pb-32 lg:pt-36">
       <div className="max-w-4xl">
         <h1 className="font-display text-balance text-[clamp(3rem,9vw,7rem)] text-travertine">{s.title}</h1>
         <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-pumice sm:text-lg">{s.intro}</p>
+        <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-travertine">
+          {d.test.teaser}
+          <Link href={testPath(lang)} className="inline-flex min-h-11 items-center gap-2 font-semibold text-gold underline-offset-4 hover:underline">
+            {d.test.cta} <ArrowRight size={16} aria-hidden />
+          </Link>
+        </p>
       </div>
       <div className="mt-12 lg:mt-16">
         <SkillsBrowser cards={cards} levels={s.levels} filterLabel={s.filterLabel} difficultyLabel={s.difficulty} />

@@ -32,6 +32,7 @@ export function SkillsBrowser({
   return (
     <>
       <FilterTabs options={options} value={filter} onChange={setFilter} label={filterLabel} />
+      <h2 className="sr-only">{levels[filter]}</h2>
       <motion.ul layout={!reduce} className="mt-10 grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
         <AnimatePresence mode="popLayout">
           {visible.map((c, i) => (

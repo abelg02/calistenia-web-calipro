@@ -28,7 +28,7 @@ export function PromoCodes({ c, id }: { c: Dictionary["codes"]; id: string }) {
                   <p className="font-display text-3xl text-travertine">{p.store}</p>
                   <p className="text-sm text-pumice">
                     {c.code}{" "}
-                    <span className="ml-1 border border-flint px-2 py-1 font-mono text-base tracking-wider text-travertine">
+                    <span translate="no" className="ml-1 border border-flint px-2 py-1 font-mono text-base tracking-wider text-travertine">
                       {p.code}
                     </span>
                   </p>

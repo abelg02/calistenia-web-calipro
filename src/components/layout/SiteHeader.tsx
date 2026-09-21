@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { List, WhatsappLogo, X } from "@phosphor-icons/react";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import type { Locale } from "@/i18n/config";
-import { alternatePath, homeAnchor, homePath, shopPath, skillsPath } from "@/lib/routes";
+import { alternatePath, diaryPath, homeAnchor, homePath, shopPath, skillsPath } from "@/lib/routes";
 
 type Props = {
   lang: Locale;
@@ -21,6 +21,8 @@ type Props = {
 // z-index scale: header 40, mobile menu 50, grain 60 (globals.css), fab 30.
 export function SiteHeader({ lang, nav, ids, cta, waHref }: Props) {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const { scrollY } = useScroll();
   // Solid background fades in after the first ~120px so the hero photo stays clean on load.
   const bgOpacity = useTransform(scrollY, [0, 120], [0, 1]);
@@ -29,23 +31,44 @@ export function SiteHeader({ lang, nav, ids, cta, waHref }: Props) {
   // Anchors point at the home page so they also work from the skills and shop pages.
   const links = [
     { href: homeAnchor(lang, ids.services), label: nav.services },
-    { href: homeAnchor(lang, ids.method), label: nav.method },
     { href: skillsPath(lang), label: nav.skills },
     { href: shopPath(lang), label: nav.shop },
+    { href: diaryPath(lang), label: nav.diary },
     { href: homeAnchor(lang, ids.codes), label: nav.codes },
     { href: homeAnchor(lang, ids.contact), label: nav.contact },
   ];
   const otherLang = lang === "es" ? "en" : "es";
   const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(href + "/"));
 
+  // Open menu: lock page scroll, Escape closes, Tab cycles inside the dialog, focus returns
+  // to the menu button on close.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const dialog = menuRef.current;
+    const trigger = triggerRef.current;
+    const focusables = () =>
+      Array.from(dialog?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? []);
+    focusables()[0]?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") return setOpen(false);
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    };
     document.documentElement.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
     return () => {
       document.documentElement.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      trigger?.focus();
     };
   }, [open]);
 
@@ -106,6 +129,7 @@ export function SiteHeader({ lang, nav, ids, cta, waHref }: Props) {
           </a>
           <button
             type="button"
+            ref={triggerRef}
             onClick={() => setOpen(true)}
             aria-label={nav.menu}
             aria-expanded={open}
@@ -120,6 +144,7 @@ export function SiteHeader({ lang, nav, ids, cta, waHref }: Props) {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={menuRef}
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -128,7 +153,7 @@ export function SiteHeader({ lang, nav, ids, cta, waHref }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex flex-col bg-basalt px-4 pb-8 sm:px-6 lg:hidden"
+            className="fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-basalt px-4 pb-8 sm:px-6 lg:hidden"
           >
             <div className="flex h-16 items-center justify-end">
               <button

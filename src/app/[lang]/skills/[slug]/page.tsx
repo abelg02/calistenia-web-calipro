@@ -75,7 +75,7 @@ export default async function SkillPage({ params }: PageProps<"/[lang]/skills/[s
   ];
 
   return (
-    <main>
+    <main id="main">
       {/* Hero: huge name + figure */}
       <section className="mx-auto grid max-w-[1400px] gap-10 px-4 pb-14 pt-24 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-10 lg:pb-20 lg:pt-32">
         <div className="flex flex-col justify-end lg:col-span-7">

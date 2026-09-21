@@ -3,18 +3,24 @@ import { ArrowRight } from "@phosphor-icons/react/ssr";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import { skills } from "@/content/skills";
-import { skillPath, skillsPath } from "@/lib/routes";
+import { skillPath, skillsPath, testPath } from "@/lib/routes";
 import { Reveal } from "@/components/ui/Reveal";
 import { SkillCard } from "@/components/skills/SkillCard";
 
 // Home preview: the five skills as a swipeable row on mobile, a five-column row on desktop.
-export function SkillsTeaser({ lang, s, id }: { lang: Locale; s: Dictionary["skills"]; id: string }) {
+export function SkillsTeaser({ lang, s, test, id }: { lang: Locale; s: Dictionary["skills"]; test: Dictionary["test"]; id: string }) {
   return (
     <section id={id} className="mx-auto max-w-[1400px] px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
       <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-3xl">
           <h2 className="font-display text-balance text-[clamp(2.6rem,7vw,5rem)] text-travertine">{s.homeTitle}</h2>
           <p className="mt-5 max-w-[58ch] text-base leading-relaxed text-pumice sm:text-lg">{s.homeIntro}</p>
+          <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-travertine">
+            {test.teaser}
+            <Link href={testPath(lang)} className="inline-flex min-h-11 items-center gap-2 font-semibold text-gold underline-offset-4 hover:underline">
+              {test.cta} <ArrowRight size={16} aria-hidden />
+            </Link>
+          </p>
         </div>
         <Link
           href={skillsPath(lang)}

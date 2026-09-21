@@ -31,7 +31,7 @@ export default async function LegalPage({ params }: PageProps<"/[lang]/legal/[do
   if (!page) notFound();
 
   return (
-    <main className="mx-auto min-h-dvh max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
+    <main id="main" className="mx-auto min-h-dvh max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
       <Link
         href={`/${lang}`}
         className="inline-flex min-h-11 items-center gap-2 text-sm text-pumice transition-colors hover:text-gold"

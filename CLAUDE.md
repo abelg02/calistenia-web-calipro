@@ -4,9 +4,9 @@
 
 Web real para CaliPro ("Calistenia Profesional"), un negocio de calistenia con 10 años de experiencia. Objetivo: conseguir clientes para el entrenamiento personalizado 1:1, vender merch, difundir los códigos de descuento y llevar a la futura app (rutinas, ejercicios y planes de pago).
 
-**Estado (2026-09-21):** web funcionando en `/es` y `/en`: home (hero con recorrido por scroll, confianza, servicios, método, adelanto de skills, adelanto de tienda, códigos, CTA final), **páginas de skills** (`/[lang]/skills` y `/[lang]/skills/[slug]`, con "Siguiente skill") y **tienda** (`/es/tienda` · `/en/shop`, filtros por categoría, ficha de producto con galería/3D, tallas y pedido por WhatsApp), páginas legales provisionales. Faltan los datos pendientes (abajo), el blog, SEO final y el despliegue.
+**Estado (2026-09-21):** web funcionando en `/es` y `/en`: home (hero con recorrido por scroll, confianza, servicios, método, adelanto de skills y tienda, códigos, CTA final), **skills** (`/[lang]/skills`, ficha con "Siguiente skill"), **test de nivel** (`/[lang]/test`), **tienda** (`/es/tienda` · `/en/shop`), **diario** (`/es/diario` · `/en/journal`, 3 artículos de VERT) y páginas legales provisionales. Modo borrador activo (noindex). Faltan los datos pendientes (abajo), SEO final con dominio real y el lanzamiento.
 
-**Comandos:** `npm run dev` (desarrollo en http://localhost:3000) · `npm run build` · `npm run lint` · `node scripts/build-models.mjs` (regenera los `.glb` de muestra).
+**Comandos:** `npm run dev` (desarrollo en http://localhost:3000) · `npm run build` (antes ejecuta `scripts/check-launch.mjs`) · `npm run lint` · `node scripts/build-models.mjs` (regenera los `.glb` de muestra).
 
 **Next.js 16:** cambia cosas respecto a versiones anteriores (`proxy.ts` en vez de `middleware.ts`, `images.qualities`, `PageProps`/`LayoutProps` globales). Antes de usar una API, consulta `node_modules/next/dist/docs/`.
 
@@ -31,6 +31,13 @@ Web real para CaliPro ("Calistenia Profesional"), un negocio de calistenia con 1
 - Header y footer viven en `src/app/[lang]/layout.tsx`, dentro de `MotionProvider` (`MotionConfig reducedMotion="user"`). **No condicionar `initial`/`style` a `useReducedMotion()`**: el servidor no conoce esa preferencia y provoca errores de hidratación.
 - Lo que se ve al cargar una página (títulos arriba del todo) no va dentro de `<Reveal>`: debe pintarse sin esperar a JavaScript.
 - Al capturar con Playwright aparece un aviso de hidratación por `caret-color` en los inputs: lo inyecta Playwright, no es un fallo de la web.
+
+## Borrador y lanzamiento
+- `site.launched` (en `src/config/site.ts`) está en `false`: todas las páginas llevan `noindex` y `robots.txt` bloquea buscadores. El día del lanzamiento se pone a `true`; entonces el build **falla** si queda algún `[PENDIENTE]`, el teléfono de ejemplo o el dominio de ejemplo (`scripts/check-launch.mjs`).
+- `sitemap.xml` se genera solo con todas las páginas y su versión en inglés (usa `site.url`).
+- Cabeceras de seguridad en `next.config.ts` (sin CSP de scripts a propósito: rompería Next y el visor 3D). Analítica: Vercel Web Analytics, sin cookies, solo se carga cuando el build es en Vercel.
+- Test de nivel: lógica en `src/content/level-test.ts`. Los 4 básicos (10 dominadas, 20 fondos, 30 flexiones, 30 s de pino a la pared) son una **propuesta**: confirmarlos con el entrenador.
+- Diario: `src/content/diary.ts`. Los artículos vienen de VERT sin autores, fechas ni anécdotas en primera persona (serían datos inventados). Si se añaden más, mismas reglas.
 
 ## Reglas del proyecto
 1. **No inventar datos.** Solo son reales: los 10 años entrenando, las fotos del parque, el logo y los servicios del briefing. Cualquier otro dato (nombre, contacto, precios, alumnos, materiales, códigos, ciudad) va como `[PENDING: …]` / `[PENDIENTE: …]` en ambos idiomas hasta que el usuario lo confirme. Un pendiente no se "rellena" con algo verosímil.

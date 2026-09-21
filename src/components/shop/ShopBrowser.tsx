@@ -29,6 +29,8 @@ export function ShopBrowser({
   return (
     <>
       <FilterTabs options={options} value={filter} onChange={setFilter} label={labels.filter} />
+      {/* Keeps heading order h1 > h2 > h3 (cards) for screen readers. */}
+      <h2 className="sr-only">{categories[filter]}</h2>
       {visible.length === 0 ? (
         <p className="mt-12 border border-dashed border-flint px-6 py-16 text-center text-pumice">{labels.empty}</p>
       ) : (

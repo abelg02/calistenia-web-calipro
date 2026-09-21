@@ -28,7 +28,7 @@ export default async function ShopPage({ params }: PageProps<"/[lang]/tienda">) 
   const s = d.shop;
 
   return (
-    <main>
+    <main id="main">
       <section className="mx-auto max-w-[1400px] px-4 pb-20 pt-28 sm:px-6 lg:px-10 lg:pb-28 lg:pt-36">
         <div className="max-w-4xl">
           <h1 className="font-display text-balance text-[clamp(3rem,9vw,7rem)] text-travertine">{s.title}</h1>

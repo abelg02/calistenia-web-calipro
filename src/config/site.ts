@@ -7,6 +7,10 @@ const PHONE_PLACEHOLDER = "+34000000000";
 
 export const site = {
   name: "CaliPro",
+  // Draft mode while false: noindex on every page, robots.txt blocks crawlers.
+  // Set to true on launch day; the build then refuses to run while any [PENDIENTE] remains
+  // (scripts/check-launch.mjs, run automatically before "npm run build").
+  launched: false as boolean,
   url: "https://calipro.example", // PENDIENTE: real domain
   phone: PHONE_PLACEHOLDER as string,
   email: null as string | null, // PENDIENTE

@@ -1,6 +1,8 @@
 // Builds the SAMPLE 3D merch models (procedural, no external assets) into public/models/*.glb.
 // They are placeholders until the real merch products and their 3D models exist.
 // Run: node scripts/build-models.mjs
+// Then shrink them (~60%, no decoder needed):
+//   npx @gltf-transform/cli@4 optimize public/models/X.glb public/models/X.glb --compress quantize --texture-compress false --simplify false
 import { writeFileSync, readFileSync } from "node:fs";
 import * as THREE from "three";
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";

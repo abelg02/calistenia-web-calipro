@@ -8,6 +8,7 @@ import { waHref } from "@/lib/contact";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { MotionProvider } from "@/components/layout/MotionProvider";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
 // Archivo with its width axis: condensed cut for display, normal width for body.
@@ -36,6 +37,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     metadataBase: new URL(site.url),
     title: d.meta.title,
     description: d.meta.description,
+    // Draft mode: keep the preview out of search engines until launch (see site.launched).
+    ...(site.launched ? {} : { robots: { index: false, follow: false } }),
     alternates: { canonical: `/${lang}`, languages: { es: "/es", en: "/en" } },
     openGraph: {
       title: d.meta.title,
@@ -54,11 +57,19 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html lang={lang} className={`${archivo.variable} ${mono.variable}`}>
       <body className="grain min-h-dvh bg-basalt">
+        <a
+          href="#main"
+          className="sr-only z-[70] bg-gold px-4 py-3 text-sm font-semibold text-basalt focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          {d.nav.skip}
+        </a>
         <MotionProvider>
           <SiteHeader lang={lang} nav={d.nav} ids={d.ids} cta={d.cta} waHref={waHref(d.hero.wa)} />
           {children}
           <SiteFooter lang={lang} d={d} />
         </MotionProvider>
+        {/* Cookieless page views (Vercel Web Analytics). Only on Vercel: locally the script 404s. */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );
