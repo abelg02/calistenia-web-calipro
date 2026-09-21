@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/*
+  CaliPro design tokens.
+  Single dark theme on purpose: the brand (logo) is black + gold, so the page never flips to light.
+  Palette = natural stone (basalt, slate, granite, travertine, pumice) + the logo's brushed gold as the ONLY accent.
+  Shape = all sharp (radius 0), like cut stone and steel bars. No exceptions.
+*/
+@theme {
+  --color-basalt: #0e0e0c;
+  --color-slate: #161613;
+  --color-granite: #24231f;
+  --color-flint: #3a3832;
+  --color-pumice: #a39e90;
+  --color-travertine: #e8e3d6;
+  --color-gold: #c8a04a;
+  --color-gold-soft: #dcb865;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-geist), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-basalt);
+    color: var(--color-travertine);
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Anchor targets clear the fixed header. */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-basalt);
+  }
+}
+
+@layer utilities {
+  /* Condensed display cut of Archivo (wdth axis 62): echoes the logo's tall, heavy lettering. */
+  .font-display {
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 62;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+  }
+  .font-condensed {
+    font-variation-settings: "wdth" 75;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Stone grain: fixed, non-interactive layer so it never repaints while scrolling. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

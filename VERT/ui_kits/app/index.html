@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit — App" name="Mobile app preview" subtitle="Two-screen preview — Hoy + Roadmap" viewport="900x900" -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VÉRTEX — App preview</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { background: #1a1814; min-height: 100vh; padding: 48px 24px; display: flex; align-items: flex-start; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .label { position: absolute; top: -28px; left: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: .18em; color: var(--mist-2); text-transform: uppercase; }
+  .device {
+    width: 360px; aspect-ratio: 9/19;
+    background: var(--ink-2);
+    border-radius: 48px;
+    border: 1px solid var(--line-dark);
+    padding: 14px;
+    position: relative;
+    box-shadow: 0 80px 120px -50px rgba(0,0,0,.6);
+  }
+  .screen {
+    width: 100%; height: 100%;
+    background: var(--ink);
+    border-radius: 36px;
+    overflow: hidden;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 110px; height: 28px; background: #000; border-radius: 999px; z-index: 5; }
+  .status { padding: 14px 28px 6px; display:flex; justify-content:space-between; font-family: var(--font-mono); font-size: 11px; color: var(--mist); position: relative; z-index: 4; margin-top: 14px;}
+  .head { padding: 28px 24px 16px; display:flex; justify-content:space-between; align-items:flex-start; }
+  .head .eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: .22em; color: var(--mist-2); text-transform: uppercase; }
+  .head h1 { font-family: var(--font-display); font-style: italic; font-size: 36px; line-height: .95; color: var(--fg-strong); margin: 6px 0 0; letter-spacing: -.02em; }
+  .head h1 .dot { color: var(--ember); }
+  .head .icon { width:36px; height:36px; border:1px solid var(--line-dark); border-radius: 50%; display:flex; align-items:center; justify-content:center; color: var(--mist); font-size: 16px; }
+  .body { flex: 1; overflow: hidden; padding: 8px 20px 20px; display:flex; flex-direction:column; gap:12px; }
+  .ring-card {
+    background: var(--ink-2); border: 1px solid var(--line-dark);
+    border-radius: 16px; padding: 18px;
+    display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center;
+  }
+  .ring { width: 64px; height: 64px; position: relative; }
+  .ring svg { transform: rotate(-90deg); }
+  .ring .pct { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; font-family: var(--font-mono); font-size: 13px; color: var(--fg-strong); }
+  .ring-card .l { font-family: var(--font-mono); font-size: 9px; letter-spacing: .18em; color: var(--mist-2); text-transform: uppercase; margin-bottom: 4px; }
+  .ring-card .n { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--fg-strong); line-height: 1; }
+  .ring-card .s { font-size: 12px; color: var(--mist-2); margin-top: 4px; }
+
+  .session-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .22em; color: var(--mist-2); text-transform: uppercase; margin: 14px 0 4px; padding: 0 4px; display:flex; justify-content:space-between; }
+  .ex {
+    background: var(--ink-2); border: 1px solid var(--line-dark);
+    border-radius: 14px; padding: 14px 16px; display:flex; flex-direction:column; gap: 10px;
+  }
+  .ex .row { display:flex; justify-content: space-between; align-items: baseline; }
+  .ex .name { font-size: 14px; color: var(--fg-strong); }
+  .ex .meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; color: var(--mist-2); }
+  .ex .bar { height: 3px; background: var(--ink-3); border-radius: 999px; overflow: hidden; }
+  .ex .bar span { display:block; height: 100%; background: var(--ember); transition: width .8s var(--ease); }
+
+  .tabbar {
+    border-top: 1px solid var(--line-dark);
+    padding: 14px 20px 26px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--ink);
+  }
+  .tab { display:flex; flex-direction:column; align-items:center; gap:6px; font-family: var(--font-mono); font-size: 9px; letter-spacing: .18em; color: var(--mist-2); text-transform: uppercase; }
+  .tab.active { color: var(--ember); }
+  .tab svg { width:18px; height: 18px; stroke: currentColor; stroke-width: 1.25; fill: none; }
+
+  /* Roadmap screen */
+  .roadmap { padding: 8px 24px 20px; display:flex; flex-direction:column; gap:0; flex: 1; overflow: hidden; }
+  .step-r { display:grid; grid-template-columns: 26px 1fr; gap: 14px; padding: 14px 0; position: relative; }
+  .step-r:not(:last-child)::after { content:''; position:absolute; left: 12px; top: 36px; bottom: -14px; width: 1px; background: var(--line-dark); }
+  .step-r .dot-r { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line-dark); display:flex; align-items:center; justify-content:center; font-family: var(--font-mono); font-size: 10px; color: var(--mist-2); background: var(--ink); position: relative; z-index: 2; }
+  .step-r.done .dot-r { background: var(--mist); color: var(--ink); border-color: var(--mist); }
+  .step-r.active .dot-r { background: var(--ember); color: var(--bone); border-color: var(--ember); }
+  .step-r .info .name { font-size: 14px; color: var(--fg-strong); }
+  .step-r .info .meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--mist-2); margin-top: 4px; text-transform: uppercase; }
+  .step-r.locked .info .name { color: var(--mist-2); }
+</style>
+</head>
+<body>
+
+<div class="device" style="position:relative">
+  <span class="label">Hoy</span>
+  <div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>9:41</span><span>● ● ●</span></div>
+    <div class="head">
+      <div>
+        <div class="eyebrow">Martes · 28 abr</div>
+        <h1>Bloque<br>de empuje<span class="dot">.</span></h1>
+      </div>
+      <div class="icon">≡</div>
+    </div>
+    <div class="body">
+      <div class="ring-card">
+        <div class="ring">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,.08)" stroke-width="3" fill="none"/>
+            <circle cx="32" cy="32" r="28" stroke="#C2553A" stroke-width="3" fill="none" stroke-dasharray="176" stroke-dashoffset="48" stroke-linecap="square"/>
+          </svg>
+          <span class="pct">73%</span>
+        </div>
+        <div>
+          <div class="l">Sesión activa</div>
+          <div class="n">Planche · Tuck</div>
+          <div class="s">Semana 14 · 35 min restantes</div>
+        </div>
+      </div>
+
+      <div class="session-title"><span>Ejercicios</span><span>3 / 5</span></div>
+
+      <div class="ex">
+        <div class="row"><span class="name">Pseudo Planche Push-up</span><span class="meta">4 × 8</span></div>
+        <div class="bar"><span style="width:100%"></span></div>
+      </div>
+      <div class="ex">
+        <div class="row"><span class="name">Tuck Planche Hold</span><span class="meta">5 × 12s</span></div>
+        <div class="bar"><span style="width:100%"></span></div>
+      </div>
+      <div class="ex" style="border-color:var(--ember)">
+        <div class="row"><span class="name" style="color:var(--ember)">L-sit en paralelas</span><span class="meta" style="color:var(--ember)">EN CURSO · 2/3</span></div>
+        <div class="bar"><span style="width:62%"></span></div>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab active">
+        <svg viewBox="0 0 24 24"><path d="M3 12 L12 4 L21 12"/><path d="M5 11 V20 H19 V11"/></svg>
+        Hoy
+      </div>
+      <div class="tab">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4 V20 M4 12 H20"/></svg>
+        Skills
+      </div>
+      <div class="tab">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M8 9 H16 M8 13 H16 M8 17 H12"/></svg>
+        Diario
+      </div>
+      <div class="tab">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M4 21 C4 16 8 14 12 14 C16 14 20 16 20 21"/></svg>
+        Perfil
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="device" style="position:relative">
+  <span class="label">Roadmap</span>
+  <div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>9:41</span><span>● ● ●</span></div>
+    <div class="head">
+      <div>
+        <div class="eyebrow">Skill · OAH-01</div>
+        <h1>One Arm<br>Handstand<span class="dot">.</span></h1>
+      </div>
+      <div class="icon">←</div>
+    </div>
+    <div class="roadmap">
+      <div class="step-r done"><div class="dot-r">✓</div><div class="info"><div class="name">Two Arm Handstand · 60s</div><div class="meta">Completado · ene 2026</div></div></div>
+      <div class="step-r done"><div class="dot-r">✓</div><div class="info"><div class="name">Wall Walks · controlados</div><div class="meta">Completado · feb 2026</div></div></div>
+      <div class="step-r active"><div class="dot-r">3</div><div class="info"><div class="name">Tuck OAH</div><div class="meta">En curso · 14 sem · 72%</div></div></div>
+      <div class="step-r locked"><div class="dot-r">4</div><div class="info"><div class="name">Straddle OAH</div><div class="meta">Bloqueado</div></div></div>
+      <div class="step-r locked"><div class="dot-r">5</div><div class="info"><div class="name">Half OAH</div><div class="meta">Bloqueado</div></div></div>
+      <div class="step-r locked"><div class="dot-r">6</div><div class="info"><div class="name">Full OAH</div><div class="meta">Bloqueado</div></div></div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><svg viewBox="0 0 24 24"><path d="M3 12 L12 4 L21 12"/><path d="M5 11 V20 H19 V11"/></svg>Hoy</div>
+      <div class="tab active"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4 V20 M4 12 H20"/></svg>Skills</div>
+      <div class="tab"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M8 9 H16 M8 13 H16 M8 17 H12"/></svg>Diario</div>
+      <div class="tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M4 21 C4 16 8 14 12 14 C16 14 20 16 20 21"/></svg>Perfil</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills · VÉRTEX</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="cinematic.css">
+</head>
+<body data-active="skills">
+<div id="vx-nav"></div>
+
+<header class="page-hero grain">
+  <div class="container" style="padding:0">
+    <div class="num">Skills · 5 movimientos fundamentales</div>
+    <h1 data-words>Cinco posiciones. Una vida<span class="dot">.</span></h1>
+    <p>No son trucos. Son posiciones que el cuerpo aprende a sostener tras meses, a veces años, de progresión medida. Cada skill tiene una ruta. Toca una para abrirla.<br><a href="test-de-nivel.html" class="btn btn-ghost" style="margin-top:24px">Hacer el test de nivel →</a></p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:96px;padding-bottom:96px">
+  <div class="container">
+    <div class="filter-bar" data-filter-group=".skills-grid .skill">
+      <button data-filter="all" class="on">Todas</button>
+      <button data-filter="elite">Élite</button>
+      <button data-filter="avanzado">Avanzado</button>
+      <button data-filter="intermedio">Intermedio</button>
+    </div>
+    <div class="skills-grid">
+      <a href="skills/one-arm-handstand.html" class="skill" data-tag="elite" style="text-decoration:none;color:inherit;position:relative">
+        <button class="wish-btn" data-wish-id="oah" onclick="event.preventDefault();vxToggleWish('oah',this)"></button>
+        <div class="skill-img" data-parallax="0.08" style="background-image:url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="skill-code">OAH-01</div>
+        <div class="skill-name">One Arm<br>Handstand</div>
+        <div class="skill-meta">
+          <span class="label">Élite</span>
+          <span class="skill-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></span>
+        </div>
+      </a>
+      <a href="skills/planche.html" class="skill" data-tag="avanzado" style="text-decoration:none;color:inherit;position:relative">
+        <button class="wish-btn" data-wish-id="planche" onclick="event.preventDefault();vxToggleWish('planche',this)"></button>
+        <div class="skill-img" data-parallax="0.08" style="background-image:url('https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="skill-code">PLN-02</div>
+        <div class="skill-name">Planche</div>
+        <div class="skill-meta"><span class="label">Avanzado</span><span class="skill-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span></div>
+      </a>
+      <a href="skills/front-lever.html" class="skill" data-tag="avanzado" style="text-decoration:none;color:inherit;position:relative">
+        <button class="wish-btn" data-wish-id="front-lever" onclick="event.preventDefault();vxToggleWish('front-lever',this)"></button>
+        <div class="skill-img" data-parallax="0.08" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="skill-code">FLV-03</div>
+        <div class="skill-name">Front<br>Lever</div>
+        <div class="skill-meta"><span class="label">Avanzado</span><span class="skill-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span></span></div>
+      </a>
+      <a href="skills/human-flag.html" class="skill" data-tag="intermedio" style="text-decoration:none;color:inherit;position:relative">
+        <button class="wish-btn" data-wish-id="human-flag" onclick="event.preventDefault();vxToggleWish('human-flag',this)"></button>
+        <div class="skill-img" data-parallax="0.08" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="skill-code">HFL-04</div>
+        <div class="skill-name">Human<br>Flag</div>
+        <div class="skill-meta"><span class="label">Intermedio</span><span class="skill-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d"></span><span class="d"></span></span></div>
+      </a>
+      <a href="skills/maltese.html" class="skill" data-tag="elite" style="text-decoration:none;color:inherit;position:relative">
+        <button class="wish-btn" data-wish-id="maltese" onclick="event.preventDefault();vxToggleWish('maltese',this)"></button>
+        <div class="skill-img" data-parallax="0.08" style="background-image:url('https://images.unsplash.com/photo-1594737626072-90dc274bc2fd?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="skill-code">MLT-05</div>
+        <div class="skill-name">Maltese</div>
+        <div class="skill-meta"><span class="label">Élite</span><span class="skill-dots"><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span><span class="d on"></span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="vx-footer"></div>
+<script src="shared.js"></script>
+</body>
+</html>

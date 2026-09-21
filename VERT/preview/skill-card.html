@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Skill card" subtitle="Skill code · serif name · difficulty dots" viewport="700x280" --><html><head><meta charset="UTF-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>body{padding:0;background:var(--ink);min-height:200px;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:oklch(28% 0.006 50)}
+.s{background:var(--ink);padding:20px;display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.code{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--mist-2);text-transform:uppercase}
+.name{font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--fg-strong);line-height:1;margin:8px 0 14px}
+.meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid oklch(28% 0.006 50);padding-top:10px}
+.lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--mist-2);text-transform:uppercase}
+.dots{display:flex;gap:4px}
+.dots span{width:6px;height:6px;border-radius:50%;background:oklch(28% 0.006 50)}
+.dots span.on{background:#C2553A}
+.img{aspect-ratio:3/2;background:#16140F center/cover no-repeat;filter:grayscale(.6) contrast(1.05)}
+</style></head><body>
+<div class="s">
+  <div>
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=600&q=80')"></div>
+    <div class="code" style="margin-top:10px">OAH-01</div>
+    <div class="name">One Arm Handstand</div>
+  </div>
+  <div class="meta"><span class="lbl">Élite</span><span class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></span></div>
+</div>
+<div class="s">
+  <div>
+    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80')"></div>
+    <div class="code" style="margin-top:10px">FLV-03</div>
+    <div class="name">Front Lever</div>
+  </div>
+  <div class="meta"><span class="lbl">Avanzado</span><span class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></span></div>
+</div>
+</body></html>

@@ -1,0 +1,190 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Instrument Serif|Geist|JetBrains Mono))/i]",
+        "message": "Font not provided by the design system. Available: Instrument Serif, Geist, JetBrains Mono."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--ash",
+      "--ash-2",
+      "--bg",
+      "--bg-elev",
+      "--bone",
+      "--bone-2",
+      "--bone-3",
+      "--container",
+      "--dur",
+      "--dur-cine",
+      "--dur-fast",
+      "--dur-slow",
+      "--ease",
+      "--ease-in",
+      "--ember",
+      "--ember-ink",
+      "--fg",
+      "--fg-muted",
+      "--fg-strong",
+      "--font-body",
+      "--font-display",
+      "--font-mono",
+      "--fs-body",
+      "--fs-body-lg",
+      "--fs-display",
+      "--fs-h1",
+      "--fs-h2",
+      "--fs-h3",
+      "--fs-h4",
+      "--fs-micro",
+      "--fs-small",
+      "--gutter",
+      "--ink",
+      "--ink-2",
+      "--ink-3",
+      "--lh-body",
+      "--lh-display",
+      "--lh-heading",
+      "--line",
+      "--line-dark",
+      "--line-light",
+      "--mist",
+      "--mist-2",
+      "--r-0",
+      "--r-1",
+      "--r-2",
+      "--s-1",
+      "--s-12",
+      "--s-16",
+      "--s-2",
+      "--s-24",
+      "--s-3",
+      "--s-32",
+      "--s-4",
+      "--s-48",
+      "--s-6",
+      "--s-64",
+      "--s-8",
+      "--section-y",
+      "--tracking-normal",
+      "--tracking-tight",
+      "--tracking-wide"
+    ],
+    "tokenKinds": {
+      "--ink": "color",
+      "--ink-2": "color",
+      "--ink-3": "color",
+      "--bone": "color",
+      "--bone-2": "color",
+      "--bone-3": "color",
+      "--ember": "color",
+      "--ember-ink": "color",
+      "--mist": "color",
+      "--mist-2": "color",
+      "--ash": "color",
+      "--ash-2": "color",
+      "--line-dark": "color",
+      "--line-light": "color",
+      "--bg": "color",
+      "--bg-elev": "shadow",
+      "--fg": "color",
+      "--fg-strong": "color",
+      "--fg-muted": "color",
+      "--line": "color",
+      "--accent": "color",
+      "--font-display": "font",
+      "--font-body": "font",
+      "--font-mono": "font",
+      "--fs-display": "font",
+      "--fs-h1": "font",
+      "--fs-h2": "font",
+      "--fs-h3": "spacing",
+      "--fs-h4": "spacing",
+      "--fs-body-lg": "spacing",
+      "--fs-body": "spacing",
+      "--fs-small": "spacing",
+      "--fs-micro": "spacing",
+      "--lh-display": "font",
+      "--lh-heading": "font",
+      "--lh-body": "font",
+      "--tracking-tight": "font",
+      "--tracking-normal": "font",
+      "--tracking-wide": "font",
+      "--s-1": "spacing",
+      "--s-2": "spacing",
+      "--s-3": "spacing",
+      "--s-4": "spacing",
+      "--s-6": "spacing",
+      "--s-8": "spacing",
+      "--s-12": "spacing",
+      "--s-16": "spacing",
+      "--s-24": "spacing",
+      "--s-32": "spacing",
+      "--s-48": "spacing",
+      "--s-64": "spacing",
+      "--section-y": "spacing",
+      "--container": "spacing",
+      "--gutter": "spacing",
+      "--r-0": "radius",
+      "--r-1": "spacing",
+      "--r-2": "spacing",
+      "--ease": "other",
+      "--ease-in": "other",
+      "--dur-fast": "other",
+      "--dur": "other",
+      "--dur-slow": "other",
+      "--dur-cine": "other"
+    },
+    "fontFamilies": [
+      "Geist",
+      "Instrument Serif",
+      "JetBrains Mono"
+    ]
+  }
+}

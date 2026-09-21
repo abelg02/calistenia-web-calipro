@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Spacing" name="Radii" subtitle="0 · 2 · 8 — the brand prefers 0" viewport="700x260" --><html><head><meta charset="UTF-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>body{padding:24px;background:var(--ink);min-height:160px;display:grid;gap:14px}
+.box{padding:18px;background:var(--ink-2);border:1px solid oklch(28% 0.006 50);display:flex;flex-direction:column;gap:6px}
+.box.r1{border-radius:2px}.box.r2{border-radius:8px}.box.r0{border-radius:0}
+.lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:var(--mist-2);text-transform:uppercase}
+.v{font-size:14px;color:var(--fg-strong)}
+</style></head><body>
+<div class="box r0"><span class="lbl">--r-0 · 0 px</span><span class="v">Default. Sections, hairlines, hero.</span></div>
+<div class="box r1"><span class="lbl">--r-1 · 2 px</span><span class="v">Buttons, inputs, chips.</span></div>
+<div class="box r2"><span class="lbl">--r-2 · 8 px</span><span class="v">Product cards, app surfaces only.</span></div>
+</body></html>
