@@ -4,7 +4,7 @@
 
 Web real para CaliPro ("Calistenia Profesional"), un negocio de calistenia con 10 años de experiencia. Objetivo: conseguir clientes para el entrenamiento personalizado 1:1, vender merch, difundir los códigos de descuento y llevar a la futura app (rutinas, ejercicios y planes de pago).
 
-**Estado (2026-09-21):** web funcionando en `/es` y `/en`: home (hero con recorrido por scroll, confianza, servicios, método, adelanto de skills y tienda, códigos, CTA final), **skills** (`/[lang]/skills`, ficha con "Siguiente skill"), **test de nivel** (`/[lang]/test`), **tienda** (`/es/tienda` · `/en/shop`), **diario** (`/es/diario` · `/en/journal`, 3 artículos de VERT) y páginas legales provisionales. Modo borrador activo (noindex). Faltan los datos pendientes (abajo), SEO final con dominio real y el lanzamiento.
+**Estado (2026-09-22):** web funcionando en `/es` y `/en`: home (hero con recorrido por scroll, confianza, servicios, método, adelanto de skills y tienda, códigos, CTA final), **skills** (`/[lang]/skills`, ficha con "Siguiente skill"), **test de nivel** (`/[lang]/test`), **tienda** (`/es/tienda` · `/en/shop`), **diario** (`/es/diario` · `/en/journal`, 3 artículos de VERT), **sobre mí** (`/es/sobre-mi` · `/en/about`: historia, datos, galería de Instagram y los 3 planes) y páginas legales provisionales. Modo borrador activo (noindex). Faltan los datos pendientes (abajo), SEO final con dominio real y el lanzamiento.
 
 **Comandos:** `npm run dev` (desarrollo en http://localhost:3000) · `npm run build` (antes ejecuta `scripts/check-launch.mjs`) · `npm run lint` · `node scripts/build-models.mjs` (regenera los `.glb` de muestra).
 
@@ -14,8 +14,8 @@ Web real para CaliPro ("Calistenia Profesional"), un negocio de calistenia con 1
 - `ARQUITECTURA.md`: stack, mapa del sitio, estructura de carpetas, componentes por sección, responsive y fases.
 - `COPY.md`: ángulo de diferenciación y copy de referencia en EN y ES.
 - **Textos de la web:** `src/i18n/dictionaries/en.ts` (se escribe primero) y `es.ts` (adaptación). Nunca se escriben textos dentro de los componentes.
-- **Datos (contacto, redes, códigos):** `src/config/site.ts`. **Skills:** `src/content/skills.ts` (datos de la antigua app de Abel en `VERT/`, ES + EN). **Productos:** `src/content/products.ts` (todos son muestra; precio y material pendientes). Rutas en `src/lib/routes.ts`; `/en/shop` es un rewrite de `/[lang]/tienda` en `next.config.ts`.
-- `VERT/`: diseño y web antiguos de Abel ("VÉRTEX"), solo como referencia de estructura. No se copia su estética; está excluido de lint. El número de teléfono está en `site.phone` (hoy es un marcador `+34000000000`).
+- **Datos (contacto, redes, códigos):** `src/config/site.ts`. **Skills:** `src/content/skills.ts` (datos de la antigua web de Abel "VÉRTEX", ES + EN). **Productos:** `src/content/products.ts` (todos son muestra; precio y material pendientes). Rutas en `src/lib/routes.ts`; `/en/shop` es un rewrite de `/[lang]/tienda` en `next.config.ts`.
+- La carpeta `VERT/` (web antigua "VÉRTEX") ya se usó como referencia y se borró el 2026-09-22. El número de teléfono está en `site.phone` (hoy es un marcador `+34000000000`).
 - `Assets/Logo`: logo (negro + oro). `Assets/Trabajo/cal1-3.png`: fotos del parque de barras. Son originales: se optimizan hacia `public/` y nunca se sirven desde `Assets/`.
 
 ## Stack y decisiones cerradas
@@ -40,11 +40,11 @@ Web real para CaliPro ("Calistenia Profesional"), un negocio de calistenia con 1
 - Diario: `src/content/diary.ts`. Los artículos vienen de VERT sin autores, fechas ni anécdotas en primera persona (serían datos inventados). Si se añaden más, mismas reglas.
 
 ## Reglas del proyecto
-1. **No inventar datos.** Solo son reales: los 10 años entrenando, las fotos del parque, el logo y los servicios del briefing. Cualquier otro dato (nombre, contacto, precios, alumnos, materiales, códigos, ciudad) va como `[PENDING: …]` / `[PENDIENTE: …]` en ambos idiomas hasta que el usuario lo confirme. Un pendiente no se "rellena" con algo verosímil.
+1. **No inventar datos.** Son reales: los 10 años entrenando, las fotos del parque, el logo, los servicios del briefing y lo confirmado el 2026-09-22 (ver "Datos confirmados"). Cualquier otro dato (nombre, contacto, precios, alumnos, materiales, códigos, ciudad) va como `[PENDING: …]` / `[PENDIENTE: …]` en ambos idiomas hasta que el usuario lo confirme. Un pendiente no se "rellena" con algo verosímil.
 2. **Copy:** tono profesional y cercano, de tú, sin superlativos vacíos y **sin en dash ni em dash** (– —). Primero se escribe en inglés y luego se adapta al español de España con el mismo ángulo, sin traducir literalmente. Ángulo: "Las barras ya las tienes. Lo que te falta es el orden."
 3. **Mobile-first:** diseñar a 375 px y comprobar en 360 / 390 / 768 / 1024 / 1440. Zonas táctiles de al menos 44 px, `svh`/`dvh` en el hero, carruseles con scroll-snap en móvil. Objetivo Lighthouse móvil ≥ 90.
 4. **Marca:** negro + oro del logo. Evitar los looks por defecto de IA (degradados morados, glassmorphism en todo, tres tarjetas iguales).
-5. **Imágenes:** con IA se pueden generar o retocar escenarios (parque, luz, más sol). **Nunca fotos de la persona** detrás de CaliPro: se usan solo fotos reales.
+5. **Imágenes:** con IA se pueden generar o retocar escenarios (parque, luz, más sol). **Nunca fotos de la persona** detrás de CaliPro generadas con IA: de Pedro solo se usan sus fotos reales de Instagram (`public/images/pedro/`, origen `kit-instagram-web/assets/instagram/`, 640 px como máximo). No usar las fotos donde salen otras personas.
 6. Páginas legales (aviso legal, privacidad, cookies) obligatorias: el sitio está dirigido a España/UE.
 7. No hacer commits sin que el usuario lo pida.
 
@@ -66,6 +66,8 @@ Web real para CaliPro ("Calistenia Profesional"), un negocio de calistenia con 1
 Abel habla español y no es experto en web ni en marketing: prefiere que se le **recomiende una opción con su porqué** en lugar de recibir listas de alternativas. Responder en español.
 
 ## Datos pendientes del usuario
-Nombre del titular · **número de teléfono/WhatsApp** · email · formato, ciudad y precio del 1:1 · precios de la app · productos del merch (nombre, material, tallas, precio, modelos 3D reales) · caducidad de los códigos y confirmar el enlace de Tutempire · confirmar las skills · dominio.
+NIF y dirección del titular (textos legales) · **número de teléfono/WhatsApp** · email · ¿1:1 también presencial en Sevilla? · precios de los 3 planes y de la app · productos del merch (nombre, material, tallas, precio, modelos 3D reales) · caducidad de los códigos y confirmar el enlace de Tutempire · confirmar las skills · dominio.
 
-**Ya confirmados:** Instagram `@pedrohr_2`, TikTok `@phr_02`, Zumub `PHRSW2` (10 %, zumu.be/vipphrsw2), Tutempire `PHRSW25` (25 %).
+**Datos confirmados:** nombre **Pedro Hidalgo Ramírez** ("PHR"), entrena en **Sevilla** (y online), +50 kg en dominadas lastradas, ~1.700 seguidores en Instagram (sep. 2026), lema "Fortis Fortuna Adiuvat", frases «Aprendí a rendir, no a rendirme» y «Ni el dolor puede acabar conmigo». **3 planes reales con su contenido** (Plan online, Asesoría 1:1, Pack skills; en `src/i18n/dictionaries` → `about.plans`), **precios aún pendientes**. Instagram `@pedrohr_2`, TikTok `@phr_02`, Zumub `PHRSW2` (10 %, zumu.be/vipphrsw2), Tutempire `PHRSW25` (25 %).
+
+**Del kit de Instagram NO se usa:** su teléfono y email (inventados), "Más elegido", "respondo en menos de 24 h" ni el contador de alumnos (sin datos). `kit-instagram-web/` es un kit externo: excluido de git y lint.

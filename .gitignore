@@ -42,3 +42,4 @@ next-env.d.ts
 
 # third-party 3D kit (not ours to publish)
 /kits-webs-3d/
+/kit-instagram-web/

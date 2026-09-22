@@ -8,7 +8,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { List, WhatsappLogo, X } from "@phosphor-icons/react";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import type { Locale } from "@/i18n/config";
-import { alternatePath, diaryPath, homeAnchor, homePath, shopPath, skillsPath } from "@/lib/routes";
+import { aboutPath, alternatePath, diaryPath, homeAnchor, homePath, shopPath, skillsPath } from "@/lib/routes";
 
 type Props = {
   lang: Locale;
@@ -34,7 +34,7 @@ export function SiteHeader({ lang, nav, ids, cta, waHref }: Props) {
     { href: skillsPath(lang), label: nav.skills },
     { href: shopPath(lang), label: nav.shop },
     { href: diaryPath(lang), label: nav.diary },
-    { href: homeAnchor(lang, ids.codes), label: nav.codes },
+    { href: aboutPath(lang), label: nav.about },
     { href: homeAnchor(lang, ids.contact), label: nav.contact },
   ];
   const otherLang = lang === "es" ? "en" : "es";

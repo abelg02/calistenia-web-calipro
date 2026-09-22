@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     // Not part of the site: third-party 3D kit and one-off asset scripts.
     ".claude/**",
     "kits-webs-3d/**",
+    "kit-instagram-web/**",
     "VERT/**",
     "scripts/**",
   ]),

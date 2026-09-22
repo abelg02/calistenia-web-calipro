@@ -5,7 +5,7 @@ import type { Dictionary } from "@/i18n/dictionaries/en";
 import type { Locale } from "@/i18n/config";
 import { phonePending, site } from "@/config/site";
 import { mailHref, telHref, waHref } from "@/lib/contact";
-import { diaryPath, homeAnchor, shopPath, skillsPath, testPath } from "@/lib/routes";
+import { aboutPath, diaryPath, homeAnchor, shopPath, skillsPath, testPath } from "@/lib/routes";
 import { Pending } from "@/components/ui/Pending";
 
 type Props = { lang: Locale; d: Dictionary };
@@ -19,6 +19,7 @@ export function SiteFooter({ lang, d }: Props) {
     { href: shopPath(lang), label: nav.shop },
     { href: testPath(lang), label: nav.test },
     { href: diaryPath(lang), label: nav.diary },
+    { href: aboutPath(lang), label: nav.about },
     { href: homeAnchor(lang, ids.codes), label: nav.codes },
     { href: homeAnchor(lang, ids.contact), label: nav.contact },
   ];

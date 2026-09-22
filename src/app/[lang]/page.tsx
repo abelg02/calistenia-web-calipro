@@ -11,6 +11,7 @@ import { Method } from "@/components/sections/Method";
 import { SkillsTeaser } from "@/components/sections/SkillsTeaser";
 import { ShopTeaser } from "@/components/sections/ShopTeaser";
 import { DiaryTeaser } from "@/components/sections/DiaryTeaser";
+import { AboutTeaser } from "@/components/sections/AboutTeaser";
 import { PromoCodes } from "@/components/sections/PromoCodes";
 import { FinalCta } from "@/components/sections/FinalCta";
 
@@ -26,6 +27,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <Hero hero={d.hero} cta={d.cta} />
         <TrustBar items={d.trust} />
         <Services s={d.services} id={d.ids.services} lang={lang} />
+        <AboutTeaser lang={lang} a={d.about} id={d.ids.about} />
         <Method m={d.method} id={d.ids.method} testHref={testPath(lang)} testCta={d.test.cta} />
         <SkillsTeaser lang={lang} s={d.skills} test={d.test} id={d.ids.skills} />
         <ShopTeaser lang={lang} m={d.merch} shop={d.shop} id={d.ids.merch} />

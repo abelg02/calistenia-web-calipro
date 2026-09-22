@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight, WhatsappLogo } from "@phosphor-icons/react/ssr";
 import type { Dictionary } from "@/i18n/dictionaries/en";
 import { waHref } from "@/lib/contact";
-import { shopPath } from "@/lib/routes";
+import { aboutPath, shopPath } from "@/lib/routes";
 import type { Locale } from "@/i18n/config";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Pending } from "@/components/ui/Pending";
@@ -41,13 +41,14 @@ export function Services({ s, id, lang }: { s: Dictionary["services"]; id: strin
               </li>
             ))}
           </ul>
-          <ButtonLink
-            href={waHref(s.coaching.wa)}
-            className="mt-8 self-start"
-            icon={<WhatsappLogo size={20} weight="fill" aria-hidden />}
-          >
-            {s.coaching.cta}
-          </ButtonLink>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href={waHref(s.coaching.wa)} icon={<WhatsappLogo size={20} weight="fill" aria-hidden />}>
+              {s.coaching.cta}
+            </ButtonLink>
+            <ButtonLink href={`${aboutPath(lang)}#planes`} variant="outline" icon={<ArrowUpRight size={18} aria-hidden />}>
+              {s.coaching.plans}
+            </ButtonLink>
+          </div>
         </Reveal>
 
         {/* App (coming soon) */}

@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
-// Translated URLs: /en/shop and /en/journal serve the /[lang]/tienda and /[lang]/diario routes.
+// Translated URLs: /en/shop, /en/journal and /en/about serve /[lang]/tienda, /diario and /sobre-mi.
 // Mismatched language/segment combos redirect to the right one.
 const translated = [
   { en: "shop", es: "tienda" },
   { en: "journal", es: "diario" },
+  { en: "about", es: "sobre-mi" },
 ];
 
 // Security headers for every response. No full script CSP on purpose: Next inline scripts and

@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/config";
 import { skills } from "@/content/skills";
 import { products } from "@/content/products";
 import { posts } from "@/content/diary";
-import { diaryPath, homePath, postPath, productPath, shopPath, skillPath, skillsPath, testPath } from "@/lib/routes";
+import { aboutPath, diaryPath, homePath, postPath, productPath, shopPath, skillPath, skillsPath, testPath } from "@/lib/routes";
 
 // Every page in Spanish, with its English alternate (hreflang).
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     testPath,
     shopPath,
     diaryPath,
+    aboutPath,
     ...skills.map((s) => (lang: Locale) => skillPath(lang, s.slug)),
     ...products.map((p) => (lang: Locale) => productPath(lang, p.slug)),
     ...posts.map((p) => (lang: Locale) => postPath(lang, p.slug)),
