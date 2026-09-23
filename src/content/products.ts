@@ -1,3 +1,5 @@
+// Merch catalogue. Apparel and cap use the -sin-marco photos: same mockups with the logo
+// printed without its gold frame (the version Abel chose on 2026-09-23).
 // Merch catalogue. Every product is a SAMPLE until the real collection exists:
 // apparel photos are AI mockups with the real logo, 3D models come from scripts/build-models.mjs.
 // Price and material stay pending (rendered as [PENDING] by the UI). Do not invent them.
@@ -29,10 +31,10 @@ export const products: Product[] = [
     slug: "camiseta-calipro",
     category: "apparel",
     sample: true,
-    cover: "/images/tienda/camiseta-frente.jpg",
+    cover: "/images/tienda/camiseta-frente-sin-marco.jpg",
     gallery: [
-      { type: "image", src: "/images/tienda/camiseta-frente.jpg", alt: { en: "CaliPro T-shirt, front", es: "Camiseta CaliPro, delante" } },
-      { type: "image", src: "/images/tienda/camiseta-espalda.jpg", alt: { en: "CaliPro T-shirt, back", es: "Camiseta CaliPro, espalda" } },
+      { type: "image", src: "/images/tienda/camiseta-frente-sin-marco.jpg", alt: { en: "CaliPro T-shirt, front", es: "Camiseta CaliPro, delante" } },
+      { type: "image", src: "/images/tienda/camiseta-espalda-sin-marco.jpg", alt: { en: "CaliPro T-shirt, back", es: "Camiseta CaliPro, espalda" } },
     ],
     sizes: APPAREL_SIZES,
     price: null,
@@ -45,16 +47,62 @@ export const products: Product[] = [
     slug: "sudadera-calipro",
     category: "apparel",
     sample: true,
-    cover: "/images/tienda/sudadera-frente.jpg",
+    cover: "/images/tienda/sudadera-frente-sin-marco.jpg",
     gallery: [
-      { type: "image", src: "/images/tienda/sudadera-frente.jpg", alt: { en: "CaliPro hoodie, front", es: "Sudadera CaliPro, delante" } },
-      { type: "image", src: "/images/tienda/sudadera-espalda.jpg", alt: { en: "CaliPro hoodie, back", es: "Sudadera CaliPro, espalda" } },
+      { type: "image", src: "/images/tienda/sudadera-frente-sin-marco.jpg", alt: { en: "CaliPro hoodie, front", es: "Sudadera CaliPro, delante" } },
+      { type: "image", src: "/images/tienda/sudadera-espalda-sin-marco.jpg", alt: { en: "CaliPro hoodie, back", es: "Sudadera CaliPro, espalda" } },
     ],
     sizes: APPAREL_SIZES,
     price: null,
     text: {
       en: { name: "CaliPro hoodie", inMessage: "the CaliPro hoodie", short: "Black, with hood and kangaroo pocket. Logo on the chest and across the back." },
       es: { name: "Sudadera CaliPro", inMessage: "la sudadera CaliPro", short: "Negra, con capucha y bolsillo canguro. Logo en el pecho y en la espalda." },
+    },
+  },
+  {
+    slug: "pantalon-calipro",
+    category: "apparel",
+    sample: true,
+    cover: "/images/tienda/pantalon-frente.jpg",
+    gallery: [
+      { type: "image", src: "/images/tienda/pantalon-frente.jpg", alt: { en: "CaliPro training shorts, front", es: "Pantalón corto CaliPro, delante" } },
+      { type: "image", src: "/images/tienda/pantalon-espalda.jpg", alt: { en: "CaliPro training shorts, back", es: "Pantalón corto CaliPro, espalda" } },
+    ],
+    sizes: APPAREL_SIZES,
+    price: null,
+    text: {
+      en: { name: "CaliPro shorts", inMessage: "the CaliPro shorts", short: "Black, above the knee, cut so nothing gets in the way on the bar." },
+      es: { name: "Pantalón corto CaliPro", inMessage: "el pantalón corto CaliPro", short: "Negro, por encima de la rodilla, con corte que no estorba en la barra." },
+    },
+  },
+  {
+    slug: "gorra-calipro",
+    category: "accessories",
+    sample: true,
+    cover: "/images/tienda/gorra-delante-sin-marco.jpg",
+    gallery: [
+      { type: "image", src: "/images/tienda/gorra-delante-sin-marco.jpg", alt: { en: "CaliPro cap, front", es: "Gorra CaliPro, delante" } },
+      { type: "image", src: "/images/tienda/gorra-espalda-sin-marco.jpg", alt: { en: "CaliPro cap, back", es: "Gorra CaliPro, espalda" } },
+    ],
+    price: null,
+    text: {
+      en: { name: "CaliPro cap", inMessage: "the CaliPro cap", short: "Black, curved brim, logo embroidered on the front and the figure on the back." },
+      es: { name: "Gorra CaliPro", inMessage: "la gorra CaliPro", short: "Negra, visera curva, logo bordado delante y la figura detrás." },
+    },
+  },
+  {
+    slug: "grips-calipro",
+    category: "accessories",
+    sample: true,
+    cover: "/images/tienda/grips-frente.jpg",
+    gallery: [
+      { type: "image", src: "/images/tienda/grips-frente.jpg", alt: { en: "CaliPro grips, pair", es: "Grips CaliPro, el par" } },
+      { type: "image", src: "/images/tienda/grips-detalle.jpg", alt: { en: "CaliPro grips, strap detail", es: "Grips CaliPro, detalle de la muñequera" } },
+    ],
+    price: null,
+    text: {
+      en: { name: "CaliPro grips", inMessage: "the CaliPro grips", short: "Two-hole grips with a wrist strap. Your hands last longer on the bar." },
+      es: { name: "Grips CaliPro", inMessage: "los grips CaliPro", short: "Grips de dos agujeros con muñequera. Aguantas más tiempo en la barra." },
     },
   },
   {
